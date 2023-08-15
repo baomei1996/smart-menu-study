@@ -12,7 +12,7 @@ const queries = {
             throw `categories query Error: ${err}`;
         }
     },
-    async item(_, { _id }, context, info) {
+    async item(_, args, context, info) {
         const _id = args._id;
 
         try {

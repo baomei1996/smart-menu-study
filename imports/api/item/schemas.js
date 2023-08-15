@@ -1,7 +1,7 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-    scalar Date;
+    scalar Date
 
     type Category {
         _id: ID!
@@ -15,7 +15,7 @@ const typeDefs = gql`
         imteImage: String
         itemCategoryId: ID
         createdAt: Date
-        category Category
+        category: Category
     }
 
     scalar Upload
@@ -30,9 +30,20 @@ const typeDefs = gql`
         addCategory(categoryName: String): ID
         updateCategory(_id: ID, categoryName: String): ID
         deleteCategory(_id: ID): ID
-        addItem(itemName: String, itemPrice: Int, itemImage: String, itemCategoryId: ID): Item)
-        updateItem(_id: ID, itemName: String, itemPrice: Int, itemImage: String, itemCategoryId: ID): Item)
-        delteItem(_id: ID): ID
+        addItem(
+            itemName: String
+            itemPrice: Int
+            itemImage: String
+            itemCategoryId: ID
+        ): Item
+        updateItem(
+            _id: ID
+            itemName: String
+            itemPrice: Int
+            itemImage: String
+            itemCategoryId: ID
+        ): Item
+        deleteItem(_id: ID): ID
         uploadFile(file: Upload): File
     }
 
@@ -41,7 +52,6 @@ const typeDefs = gql`
         item(_id: ID): Item
         items(pageNumber: Int, search: String, itemCategoryId: ID): [Item]
         itemsPageCount(search: String, itemCategoryId: ID): Int
-
     }
 `;
 
